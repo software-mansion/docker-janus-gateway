@@ -1,0 +1,19 @@
+general: {
+	enabled = {{ default .Env.RABBITMQ_EVENTHANDLER_ENABLED "false" }}
+	events = "{{ default .Env.RABBITMQ_EVENTHANDLER_EVENTS "all" }}"
+	grouping = {{ default .Env.RABBITMQ_EVENTHANDLER_GROUPING "true" }}
+	json = "{{ default .Env.RABBITMQ_EVENTHANDLER_JSON "indented" }}"
+	host = "{{ default .Env.RABBITMQ_EVENTHANDLER_HOST "localhost" }}"
+	port = {{ default .Env.RABBITMQ_EVENTHANDLER_PORT "5672" }}
+	username = "{{ default .Env.RABBITMQ_EVENTHANDLER_USERNAME "guest" }}"
+	password = "{{ default .Env.RABBITMQ_EVENTHANDLER_PASSWORD "guest" }}"
+	vhost = "{{ default .Env.RABBITMQ_EVENTHANDLER_VHOST "/" }}"
+	route_key = "{{ default .Env.RABBITMQ_EVENTHANDLER_ROUTE_KEY "from-janus-events" }}"
+	exchange = "{{ default .Env.RABBITMQ_EVENTHANDLER_EXCHANGE "wembrane" }}"
+	ssl_enabled = {{ default .Env.RABBITMQ_EVENTHANDLER_SSL_ENABLED "false" }}
+	ssl_verify_peer = {{ default .Env.RABBITMQ_EVENTHANDLER_SSL_VERIFY_PEER "true" }}
+	ssl_verify_hostname = {{ default .Env.RABBITMQ_EVENTHANDLER_SSL_VERIFY_HOSTNAME "true" }}
+	ssl_cacert = "{{ default .Env.RABBITMQ_EVENTHANDLER_SSL_CACERT "" }}"
+	ssl_cert = "{{ default .Env.RABBITMQ_EVENTHANDLER_SSL_CERT "" }}"
+	ssl_key = "{{ default .Env.RABBITMQ_EVENTHANDLER_SSL_key "" }}"
+}

@@ -1,0 +1,25 @@
+general: {
+	enabled = {{ default .Env.RABBITMQ_ENABLED "false" }}
+	events = {{ default .Env.RABBITMQ_EVENTS "true" }}
+	json = "{{ default .Env.RABBITMQ_JSON "indented" }}"
+	host = "{{ default .Env.RABBITMQ_HOST "localhost" }}"
+	port = {{ default .Env.RABBITMQ_PORT "5672" }}
+	username = "{{ default .Env.RABBITMQ_USERNAME "guest" }}"
+	password = "{{ default .Env.RABBITMQ_PASSWORD "guest" }}"
+	vhost = "{{ default .Env.RABBITMQ_VHOST "/" }}"
+	to_janus = "{{ default .Env.RABBITMQ_TO_JANUS "to-janus" }}"
+	from_janus = "{{ default .Env.RABBITMQ_FROM_JANUS "from-janus" }}"
+	janus_exchange = "{{ default .Env.RABBITMQ_EXCHANGE "wembrane" }}"
+	ssl_enabled = {{ default .Env.RABBITMQ_SSL_ENABLED "false" }}
+	ssl_verify_peer = {{ default .Env.RABBITMQ_SSL_VERIFY_PEER "true" }}
+	ssl_verify_hostname = {{ default .Env.RABBITMQ_SSL_VERIFY_HOSTNAME "true" }}
+	ssl_cacert = "{{ default .Env.RABBITMQ_SSL_CACERT "" }}"
+	ssl_cert = "{{ default .Env.RABBITMQ_SSL_CERT "" }}"
+	ssl_key = "{{ default .Env.RABBITMQ_SSL_key "" }}"
+}
+
+admin: {
+	admin_enabled = {{ default .Env.RABBITMQ_ADMIN_ENABLED "false" }}
+	to_janus_admin = "{{ default .Env.RABBITMQ_TO_JANUS_ADMIN "to-janus-admin" }}"
+	from_janus_admin = "{{ default .Env.RABBITMQ_FROM_JANUS_ADMIN "from-janus-admin" }}"
+}

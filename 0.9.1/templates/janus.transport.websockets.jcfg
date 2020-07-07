@@ -1,0 +1,38 @@
+general: {
+	events = {{ default .Env.WEBSOCKETS_EVENTS "true" }}
+	json = "{{ default .Env.WEBSOCKETS_JSON "indented" }}"
+	pingpong_trigger = {{ default .Env.WEBSOCKETS_PINGPONG_TRIGGER "30" }}
+	pingpong_timeout = {{ default .Env.WEBSOCKETS_PINGPONG_TIMEOUT "10" }}
+	ws = {{ default .Env.WEBSOCKETS_ENABLED "false" }}
+	ws_port = {{ default .Env.WEBSOCKETS_PORT "8188" }}
+	wss = {{ default .Env.WEBSOCKETS_SSL_ENABLED "false" }}
+	wss_port = {{ default .Env.WEBSOCKETS_SSL_PORT "8989" }}
+	ws_logging = "{{ default .Env.WEBSOCKETS_LOGGING "err,warn" }}"
+
+  # FIXME, set this only if env var is present
+	#ws_interface = "{{ default .Env.WEBSOCKETS_INTERFACE "eth0" }}"
+	#ws_ip = "{{ default .Env.WEBSOCKETS_IP "192.168.0.1" }}"
+	#wss_interface = "{{ default .Env.WEBSOCKETS_SSL_INTERFACE "eth0" }}"
+	#wss_ip = "{{ default .Env.WEBSOCKETS_SSL_IP "192.168.0.1" }}"
+	#ws_acl = "{{ default .Env.WEBSOCKETS_ACL "127.,192.168.0." }}"
+}
+
+admin: {
+	admin_ws = {{ default .Env.WEBSOCKETS_ADMIN_ENABLED "false" }}
+	admin_ws_port = {{ default .Env.WEBSOCKETS_ADMIN_PORT "7188" }}
+	admin_wss = {{ default .Env.WEBSOCKETS_ADMIN_SSL_ENABLED "false" }}
+	admin_wss_port = {{ default .Env.WEBSOCKETS_ADMIN_SSL_PORT "7989" }}
+
+  # FIXME, set this only if env var is present
+	#admin_ws_interface = "{{ default .Env.WEBSOCKETS_ADMIN_INTERFACE "eth0" }}"
+	#admin_ws_ip = "{{ default .Env.WEBSOCKETS_ADMIN_IP "192.168.0.1" }}"
+	#admin_wss_interface = "{{ default .Env.WEBSOCKETS_ADMIN_SSL_INTERFACE "eth0" }}"
+	#admin_wss_ip = "{{ default .Env.WEBSOCKETS_ADMIN_SSL_IP "192.168.0.1" }}"
+	#admin_ws_acl = "{{ default .Env.WEBSOCKETS_ADMIN_ACL "127.,192.168.0." }}"
+}
+
+certificates: {
+	cert_pem = "{{ default .Env.WEBSOCKETS_SSL_CERT_PEM "" }}"
+	cert_key = "{{ default .Env.WEBSOCKETS_SSL_CERT_KEY "" }}"
+	cert_pwd = "{{ default .Env.WEBSOCKETS_SSL_CERT_PWD "" }}"
+}

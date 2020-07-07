@@ -1,0 +1,26 @@
+From 60de5f32eea6cec032bc509e41ed8264fabb1e2c Mon Sep 17 00:00:00 2001
+From: Marcin Lewandowski <marcin.lewandowski@swmansion.com>
+Date: Mon, 20 Apr 2020 18:16:15 +0200
+Subject: [PATCH 1/1] Use direct, not fanout exchange type in RabbitMQ event
+ handler
+
+---
+ events/janus_rabbitmqevh.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/events/janus_rabbitmqevh.c b/events/janus_rabbitmqevh.c
+index fe36fbb7..d903126f 100644
+--- a/events/janus_rabbitmqevh.c
++++ b/events/janus_rabbitmqevh.c
+@@ -92,7 +92,7 @@ static void janus_rabbitmqevh_event_free(json_t *event) {
+ static size_t json_format = JSON_INDENT(3) | JSON_PRESERVE_ORDER;
+ 
+ /* FIXME: Should it be configurable? */
+-#define JANUS_RABBITMQ_EXCHANGE_TYPE "fanout"
++#define JANUS_RABBITMQ_EXCHANGE_TYPE "direct"
+ 
+ /* RabbitMQ session */
+ static amqp_connection_state_t rmq_conn;
+-- 
+2.24.1 (Apple Git-126)
+
