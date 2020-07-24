@@ -10,6 +10,7 @@ general: {
 	to_janus = "{{ default .Env.RABBITMQ_TO_JANUS "to-janus" }}"
 	from_janus = "{{ default .Env.RABBITMQ_FROM_JANUS "from-janus" }}"
 	janus_exchange = "{{ default .Env.RABBITMQ_EXCHANGE "wembrane" }}"
+	janus_exchange_type = "direct"
 	ssl_enabled = {{ default .Env.RABBITMQ_SSL_ENABLED "false" }}
 	ssl_verify_peer = {{ default .Env.RABBITMQ_SSL_VERIFY_PEER "true" }}
 	ssl_verify_hostname = {{ default .Env.RABBITMQ_SSL_VERIFY_HOSTNAME "true" }}

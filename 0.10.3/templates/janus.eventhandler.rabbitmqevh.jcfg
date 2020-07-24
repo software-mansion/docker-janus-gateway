@@ -10,6 +10,7 @@ general: {
 	vhost = "{{ default .Env.RABBITMQ_EVENTHANDLER_VHOST "/" }}"
 	route_key = "{{ default .Env.RABBITMQ_EVENTHANDLER_ROUTE_KEY "from-janus-events" }}"
 	exchange = "{{ default .Env.RABBITMQ_EVENTHANDLER_EXCHANGE "wembrane" }}"
+	janus_exchange_type = "direct"
 	ssl_enabled = {{ default .Env.RABBITMQ_EVENTHANDLER_SSL_ENABLED "false" }}
 	ssl_verify_peer = {{ default .Env.RABBITMQ_EVENTHANDLER_SSL_VERIFY_PEER "true" }}
 	ssl_verify_hostname = {{ default .Env.RABBITMQ_EVENTHANDLER_SSL_VERIFY_HOSTNAME "true" }}

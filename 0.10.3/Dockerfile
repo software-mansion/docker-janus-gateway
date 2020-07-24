@@ -113,12 +113,8 @@ RUN \
 # Build janus-gateway from sources
 RUN \
   cd /build && \
-  git clone --branch v0.9.1 https://github.com/meetecho/janus-gateway.git 
-ADD patches/0001-Use-direct-not-fanout-exchange-type-in-RabbitMQ.patch /build
-ADD patches/0002-Use-direct-not-fanout-exchange-type-in-RabbitMQ-event-handler.patch /build
+  git clone --branch v0.10.3 https://github.com/meetecho/janus-gateway.git 
 RUN cd /build/janus-gateway && \
-  patch -p1 < ../0001-Use-direct-not-fanout-exchange-type-in-RabbitMQ.patch && \
-  patch -p1 < ../0002-Use-direct-not-fanout-exchange-type-in-RabbitMQ-event-handler.patch && \
   sh autogen.sh && \
   ./configure --prefix=/usr/local \
     --disable-all-transports \
