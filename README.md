@@ -24,7 +24,7 @@ being incremented from 0.
 # Building
 
 ```
-docker build -t swmansion/janus:0.10.3-0 0.10.3
+docker build -t swmansion/janus:0.10.6-0 .
 ```
 
 # Usage

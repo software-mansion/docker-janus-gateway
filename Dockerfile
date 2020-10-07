@@ -4,27 +4,27 @@ ENV DEBIAN_FRONTEND=noninteractive
 # Create workdir
 RUN mkdir /build
 
-# Install global build dependencies 
+# Install global build dependencies
 RUN \
   apt-get update && \
   apt-get install -y \
-    git \
-    pkg-config \
-    libtool \
-    automake
+  git \
+  pkg-config \
+  libtool \
+  automake
 
 # Install build dependencies of libnice
 RUN \
   apt-get update && \
   apt-get install -y \
-	  libssl-dev \
-    libglib2.0-dev \
-    gtk-doc-tools
+  libssl-dev \
+  libglib2.0-dev \
+  gtk-doc-tools
 
 # Build libnice from sources as one shipped with ubuntu:bionic is too old, at least 0.1.15 is required
 RUN \
   cd /build && \
-  git clone --branch 0.1.16 https://gitlab.freedesktop.org/libnice/libnice.git && \
+  git clone --branch 0.1.17 https://gitlab.freedesktop.org/libnice/libnice.git && \
   cd libnice && \
   sh ./autogen.sh && \
   ./configure --prefix=/usr/local && \
@@ -35,7 +35,7 @@ RUN \
 RUN \
   apt-get update && \
   apt-get install -y \
-	  libssl-dev
+  libssl-dev
 
 # Build libsrtp from sources as one shipped with ubuntu:bionic does not support AES-GCM profiles
 # This needs to use /usr or /usr/local as a prefix, see https://github.com/meetecho/janus-gateway/issues/2019
@@ -45,7 +45,7 @@ RUN \
   cd libsrtp && \
   ./configure --prefix=/usr/local --enable-openssl && \
   make -j$(nproc) shared_library && \
-  make install 
+  make install
 
 # Build usrsctp from sources
 RUN \
@@ -54,20 +54,20 @@ RUN \
   cd usrsctp && \
   git reset --hard 579e6dea765c593acaa8525f6280b85868c866fc && \
   ./bootstrap && \
-  ./configure --prefix=/usr/local && \ 
-  make -j$(nproc) && \ 
+  ./configure --prefix=/usr/local && \
+  make -j$(nproc) && \
   make install
 
 # Install build dependencies of libwebsockets
 RUN \
   apt-get update && \
   apt-get install -y \
-	  cmake
+  cmake
 
 # Build libwebsockets from sources as one shipped with ubuntu:bionic is too old, at least 2.4 is required
 RUN \
   cd /build && \
-  git clone --branch v2.4-stable https://libwebsockets.org/repo/libwebsockets && \
+  git clone --branch v4.1-stable https://libwebsockets.org/repo/libwebsockets && \
   cd libwebsockets && \
   mkdir build && \
   cd build && \
@@ -79,7 +79,7 @@ RUN \
 RUN \
   apt-get update && \
   apt-get install -y \
-	  cmake
+  cmake
 
 # Build librabbitmq-c from sources as one shipped with ubuntu:bionic is too old
 RUN \
@@ -98,31 +98,31 @@ RUN \
 RUN \
   apt-get update && \
   apt-get install -y \
-	  libssl-dev \
-    libglib2.0-dev \
-    libmicrohttpd-dev \
-    libjansson-dev \
-    libsofia-sip-ua-dev \ 
-	  libopus-dev \
-    libogg-dev \
-    libcurl4-openssl-dev \
-    liblua5.3-dev \
-	  libconfig-dev \
-    gengetopt
+  libssl-dev \
+  libglib2.0-dev \
+  libmicrohttpd-dev \
+  libjansson-dev \
+  libsofia-sip-ua-dev \
+  libopus-dev \
+  libogg-dev \
+  libcurl4-openssl-dev \
+  liblua5.3-dev \
+  libconfig-dev \
+  gengetopt
 
 # Build janus-gateway from sources
 RUN \
   cd /build && \
-  git clone --branch v0.10.3 https://github.com/meetecho/janus-gateway.git 
+  git clone --branch v0.10.6 https://github.com/meetecho/janus-gateway.git
 RUN cd /build/janus-gateway && \
   sh autogen.sh && \
   ./configure --prefix=/usr/local \
-    --disable-all-transports \
-    --enable-websockets \
-    --enable-rabbitmq \
-    --disable-all-handlers \
-    --enable-rabbitmq-event-handler \
-    --disable-all-loggers
+  --disable-all-transports \
+  --enable-websockets \
+  --enable-rabbitmq \
+  --disable-all-handlers \
+  --enable-rabbitmq-event-handler \
+  --disable-all-loggers
 RUN cd /build/janus-gateway && \
   make -j$(nproc) && \
   make install && \
@@ -132,13 +132,13 @@ RUN cd /build/janus-gateway && \
 RUN \
   apt-get update && \
   apt-get install -y \
-    wget
+  wget
 
 # Install dockerize
 ENV DOCKERIZE_VERSION v0.6.1
 RUN wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz \
-    && tar -C /usr/local/bin -xzvf dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz \
-    && rm dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
+  && tar -C /usr/local/bin -xzvf dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz \
+  && rm dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
 
 
 FROM ubuntu:bionic
@@ -147,17 +147,17 @@ FROM ubuntu:bionic
 RUN \
   apt-get update && \
   apt-get install -y \
-	  libssl1.1 \
-    libglib2.0-0 \
-    libmicrohttpd12 \
-    libjansson4 \
-    libsofia-sip-ua-glib3 \ 
-	  libopus0 \
-    libogg0 \
-    libcurl4 \
-    liblua5.3-0 \
-	  libconfig9 && \
- rm -rf /var/lib/apt/lists/*
+  libssl1.1 \
+  libglib2.0-0 \
+  libmicrohttpd12 \
+  libjansson4 \
+  libsofia-sip-ua-glib3 \
+  libopus0 \
+  libogg0 \
+  libcurl4 \
+  liblua5.3-0 \
+  libconfig9 && \
+  rm -rf /var/lib/apt/lists/*
 
 # Copy all things that were built
 COPY --from=build /usr/local /usr/local
