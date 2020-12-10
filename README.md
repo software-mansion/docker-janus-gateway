@@ -44,9 +44,6 @@ to the original configuration files in order to provide more consistent usage.
 
 ### Gateway itself
 
-#### Required options
-
-- GATEWAY_IP - IP address to use, set it to the IP of the Docker host or if you're using 1:1 NAT (e.g. Amazon EC2) to the public IP of the machine.
 
 #### Logging
 
@@ -65,8 +62,15 @@ to the original configuration files in order to provide more consistent usage.
 
 ### NAT
 
-- STUN_SERVER - STUN server address to use (default=stun.l.google.com)
-- STUN_PORT - STUN server port to use (default=19302)
+- GATEWAY_IP - IP address to use, set it to the IP of the Docker host or if you're using 1:1 NAT (e.g. Amazon EC2) to the public IP of the machine.
+- STUN_SERVER - STUN server address to use
+- STUN_PORT - STUN server port to use
+- NICE_DEBUG - debug ICE (default=false)
+- FULL_TRICKLE - whether Janus should do Full ICE Trickle (default=true)
+- ICE_LITE - whether Janus should enable ICE-Lite (default=false)
+- ICE_TCP - whether Janus should enable ICE-TCP (default=false)
+- ICE_ENFORCE_LIST - choose which interfaces should be explicitly used by the gateway for the purpose of ICE candidates gathering (e.g. "eth0,192.168.0.1"), empty by default
+- ICE_IGNORE_LIST - choose which interfaces should be ignored by the gateway for the purpose of ICE candidates gathering (e.g. "eth0,192.168.0.1"), (default=vmnet)
 
 ### RabbitMQ
 

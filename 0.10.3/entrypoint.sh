@@ -1,9 +1,4 @@
 #!/bin/bash
-if [[ -z "${GATEWAY_IP}" ]]; then
-  >&2 echo "Error: GATEWAY_IP environment variable is not set. Please set it to IP of the host that runs the Docker image"
-  exit 1
-fi
-
 DOCKERIZE_COMMON_ARGS="-template /templates:/usr/local/etc/janus su app -c /usr/local/bin/janus"
 
 if [[ "$RABBITMQ_ENABLED" == "true" ]]; then
