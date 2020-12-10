@@ -84,6 +84,7 @@ in Janus Gateway's source code for detailed explanation of the parameters.
 - RABBITMQ_TO_JANUS - Name of the queue for incoming messages (default=to-janus)
 - RABBITMQ_FROM_JANUS - Name of the queue for outgoing messages (default=from-janus)
 - RABBITMQ_EXCHANGE - Exchange for outgoing messages, using default if not provided (default=wembrane)
+- RABBITMQ_EXCHANGE_TYPE - Exchange for outgoing messages, using default if not provided (default=direct)
 - RABBITMQ_SSL_ENABLED - Whether ssl support must be enabled
 - RABBITMQ_SSL_VERIFY_PEER - Whether peer verification must be enabled
 - RABBITMQ_SSL_VERIFY_HOSTNAME - Whether hostname verification must be enabled
@@ -105,6 +106,7 @@ in Janus Gateway's source code for detailed explanation of the parameters.
 - RABBITMQ_EVENTHANDLER_VHOST - Virtual host to specify when logging in, if needed
 - RABBITMQ_EVENTHANDLER_ROUTE_KEY - Name of the queue for incoming messages (default=from-janus-event)
 - RABBITMQ_EVENTHANDLER_EXCHANGE - Exchange for outgoing messages, using default if not provided (default=wembrane)
+- RABBITMQ_EVENTHANDLER_EXCHANGE_TYPE - Exchange type for outgoing messages, using default if not provided (default=direct)
 - RABBITMQ_EVENTHANDLER_SSL_ENABLED - Whether ssl support must be enabled
 - RABBITMQ_EVENTHANDLER_SSL_VERIFY_PEER - Whether peer verification must be enabled
 - RABBITMQ_EVENTHANDLER_SSL_VERIFY_HOSTNAME - Whether hostname verification must be enabled
