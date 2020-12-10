@@ -24,7 +24,7 @@ being incremented from 0.
 # Building
 
 ```
-docker build -t swmansion/janus:0.10.3-1 0.10.3
+docker build -t swmansion/janus:0.10.3-2 0.10.3
 ```
 
 # Usage
@@ -32,7 +32,7 @@ docker build -t swmansion/janus:0.10.3-1 0.10.3
 ## Sample
 
 ```
-docker run --rm -e GATEWAY_IP=192.168.0.123 -e WEBSOCKETS_ENABLED=true -e RTP_PORT_RANGE=10000-10099 -p 8188:8188 -p 10000-10099:10000-10099/udp -ti swmansion/janus:0.10.3-1
+docker run --rm -e GATEWAY_IP=192.168.0.123 -e WEBSOCKETS_ENABLED=true -e RTP_PORT_RANGE=10000-10099 -p 8188:8188 -p 10000-10099:10000-10099/udp -ti swmansion/janus:0.10.3-2
 ```
 
 (replace 192.168.0.123 with your IP)
