@@ -44,6 +44,9 @@ to the original configuration files in order to provide more consistent usage.
 
 ### Gateway itself
 
+#### Authentication
+
+- ADMIN_SECRET - String that all Janus requests must contain to be accepted/authorized by the admin/monitor (default=janusoverlord).
 
 #### Logging
 
