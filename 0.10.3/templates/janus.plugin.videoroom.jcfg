@@ -41,9 +41,11 @@ general: {
 	admin_key = "{{ default .Env.PLUGIN_VIDEOROOM_ADMIN_KEY "supersecret" }}"		
 									# If set, rooms can be created via API only
 									# if this key is provided in the request
-	#lock_rtp_forward = true		# Whether the admin_key above should be
+	lock_rtp_forward = {{ default .Env.PLUGIN_VIDEOROOM_LOCK_RTP_FORWARD "true" }}		
+	                # Whether the admin_key above should be
 									# enforced for RTP forwarding requests too
-	#events = false					# Whether events should be sent to event
+	events = {{ default .Env.PLUGIN_VIDEOROOM_EVENTS "true" }}
+					 			 # Whether events should be sent to event
 									# handlers (default=true)
 
 	# By default, integers are used as a unique ID for both rooms and participants.
