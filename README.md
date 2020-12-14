@@ -75,6 +75,12 @@ to the original configuration files in order to provide more consistent usage.
 - ICE_ENFORCE_LIST - choose which interfaces should be explicitly used by the gateway for the purpose of ICE candidates gathering (e.g. "eth0,192.168.0.1"), empty by default
 - ICE_IGNORE_LIST - choose which interfaces should be ignored by the gateway for the purpose of ICE candidates gathering (e.g. "eth0,192.168.0.1"), (default=vmnet)
 
+### Loaded libraries
+
+- DISABLED_PLUGINS - disables plugins (default="libjanus_voicemail.so,libjanus_recordplay.so")
+- DISABLED_TRANSPORTS - disables transport libraries (default="libjanus_pfunix.so")
+- DISABLED_LOGGERS - disables logging plugins, e.g. "libjanus_jsonlog.so" (default = "")
+
 ### RabbitMQ
 
 See [janus.transport.rabbitmq.jcfg.sample](https://github.com/meetecho/janus-gateway/blob/v0.10.3/conf/janus.transport.rabbitmq.jcfg.sample)

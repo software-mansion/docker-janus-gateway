@@ -286,7 +286,7 @@ nat: {
 # names to identify the plugins to disable. By default all available
 # plugins are enabled and loaded at startup.
 plugins: {
-	#disable = "libjanus_voicemail.so,libjanus_recordplay.so"
+	disable = "{{ default .Env.DISABLED_PLUGINS "libjanus_voicemail.so,libjanus_recordplay.so" }}"
 }
 
 # You can choose which of the available transports should be enabled or
@@ -295,7 +295,7 @@ plugins: {
 # to identify the transports to disable. By default all available
 # transports are enabled and loaded at startup.
 transports: {
-	disable = "libjanus_pfunix.so"
+	disable = "{{ default .Env.DISABLED_TRANSPORTS "libjanus_pfunix.so" }}"
 }
 
 # As a core feature, Janus can log either on the standard output, or to
@@ -305,7 +305,7 @@ transports: {
 # use a comma separated list of logger file names to identify the loggers
 # to disable. By default all available loggers are enabled and loaded at startup.
 loggers: {
-	#disable = "libjanus_jsonlog.so"
+	disable = "{{ default .Env.DISABLED_LOGGERS "" }}"
 }
 
 # Event handlers allow you to receive live events from Janus happening
