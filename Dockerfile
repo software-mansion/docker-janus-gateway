@@ -20,7 +20,7 @@ RUN \
   git clone https://github.com/sctplab/usrsctp && \
   cd usrsctp && \
   git reset --hard 579e6dea765c593acaa8525f6280b85868c866fc && \
-  cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr/local && \
+  cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr/local . && \
   make -j$(nproc) && \
   make install
 
@@ -39,6 +39,9 @@ RUN \
     libsofia-sip-ua-dev \
 	  libopus-dev \
     libogg-dev \
+    libavcodec-dev \
+    libavformat-dev \
+    libavutil-dev \
     libcurl4-openssl-dev \
     liblua5.3-dev \
 	  libconfig-dev \
@@ -52,6 +55,7 @@ RUN cd /build/janus-gateway && \
   sh autogen.sh && \
   ./configure --prefix=/usr/local \
     --disable-all-transports \
+    --enable-post-processing \
     --enable-websockets \
     --enable-rabbitmq \
     --disable-all-handlers \
@@ -92,6 +96,9 @@ RUN \
     libsofia-sip-ua-glib3 \
 	  libopus0 \
     libogg0 \
+    libavcodec58 \
+    libavformat58 \
+    libavutil56 \
     libcurl4 \
     liblua5.3-0 \
 	  libconfig9 && \
