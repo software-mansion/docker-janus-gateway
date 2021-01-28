@@ -30,7 +30,7 @@ RUN \
   apt-get install -y \
 	  libssl-dev
 
-# Build libsrtp from sources as one shipped with ubuntu:bionic does not support AES-GCM profiles
+# Build libsrtp from sources as one shipped with ubuntu does not support AES-GCM profiles
 # This needs to use /usr or /usr/local as a prefix.
 # See https://github.com/meetecho/janus-gateway/issues/2019
 # See https://github.com/meetecho/janus-gateway/issues/2024
