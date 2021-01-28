@@ -24,12 +24,29 @@ RUN \
   make -j$(nproc) && \
   make install
 
+# Install build dependencies of libsrtp
+RUN \
+  apt-get update && \
+  apt-get install -y \
+	  libssl-dev
+
+# Build libsrtp from sources as one shipped with ubuntu:bionic does not support AES-GCM profiles
+# This needs to use /usr or /usr/local as a prefix.
+# See https://github.com/meetecho/janus-gateway/issues/2019
+# See https://github.com/meetecho/janus-gateway/issues/2024
+RUN \
+  cd /build && \
+  git clone --branch v2.3.0 https://github.com/cisco/libsrtp.git && \
+  cd libsrtp && \
+  ./configure --prefix=/usr/local --enable-openssl && \
+  make -j$(nproc) shared_library && \
+  make install
+
 # Install build dependencies of janus-gateway
 RUN \
   apt-get update && \
   apt-get install -y \
     libnice-dev \
-    libsrtp2-dev \
     libwebsockets-dev \
     librabbitmq-dev \
 	  libssl-dev \
@@ -86,7 +103,6 @@ RUN \
   apt-get update && \
   apt-get install -y \
 	  libnice10 \
-    libsrtp2-1 \
     libwebsockets15 \
     librabbitmq4 \
 	  libssl1.1 \
