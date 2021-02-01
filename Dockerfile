@@ -24,6 +24,29 @@ RUN \
   make -j$(nproc) && \
   make install
 
+# Install build dependencies of libnice
+RUN \
+  apt-get update && \
+  apt-get install -y \
+	  libssl-dev \
+    libglib2.0-dev \
+    python3 \
+    python3-pip \ 
+    python3-setuptools \
+    python3-wheel \
+    ninja-build \
+    gtk-doc-tools && \
+  pip3 install meson
+
+# Build libnice from sources as one shipped with ubuntu is a bit outdated
+RUN \
+  cd /build && \
+  git clone --branch 0.1.18 https://gitlab.freedesktop.org/libnice/libnice.git && \
+  cd libnice && \
+  meson builddir && \
+  ninja -C builddir && \
+  ninja -C builddir install
+
 # Install build dependencies of libsrtp
 RUN \
   apt-get update && \
@@ -46,7 +69,6 @@ RUN \
 RUN \
   apt-get update && \
   apt-get install -y \
-    libnice-dev \
     libwebsockets-dev \
     librabbitmq-dev \
 	  libssl-dev \
@@ -102,7 +124,6 @@ FROM ubuntu:focal
 RUN \
   apt-get update && \
   apt-get install -y \
-	  libnice10 \
     libwebsockets15 \
     librabbitmq4 \
 	  libssl1.1 \
