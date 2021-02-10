@@ -24,7 +24,7 @@ being incremented from 0.
 # Building
 
 ```
-docker build -t swmansion/janus-gateway:0.10.9-1 .
+docker build -t swmansion/janus-gateway:0.10.9-2 .
 ```
 
 # Usage
@@ -40,7 +40,7 @@ docker run --rm \
  -e RTP_PORT_RANGE=10000-10099 \
  -p 8188:8188 \
  -p 10000-10099:10000-10099/udp \
- -ti swmansion/janus-gateway:0.10.9-1
+ -ti swmansion/janus-gateway:0.10.9-2
 ```
 
 (replace 192.168.0.123 with your IP)
