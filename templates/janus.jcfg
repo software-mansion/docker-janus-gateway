@@ -39,7 +39,7 @@ general: {
 
 		# Generic settings
 	#interface = "1.2.3.4"			# Interface to use (will be used in SDP)
-	#server_name = "MyJanusInstance"# Public name of this Janus instance
+	server_name = "{{ default .Env.SERVER_NAME "MyJanusInstance" }}"# Public name of this Janus instance
 									# as it will appear in an info request
 	#session_timeout = 60			# How long (in seconds) we should wait before
 									# deciding a Janus session has timed out. A

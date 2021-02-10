@@ -52,6 +52,10 @@ to the original configuration files in order to provide more consistent usage.
 
 ### Gateway itself
 
+#### General
+
+- SERVER_NAME - String that identifies this particular Janus instance (default=MyJanusInstance)
+
 #### Authentication
 
 - ADMIN_SECRET - String that all Janus requests must contain to be accepted/authorized by the admin/monitor (default=janusoverlord).
