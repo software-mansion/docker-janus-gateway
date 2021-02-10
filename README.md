@@ -32,7 +32,15 @@ docker build -t swmansion/janus-gateway:0.10.9-1 .
 ## Sample
 
 ```
-docker run --rm -e GATEWAY_IP=192.168.0.123 -e WEBSOCKETS_ENABLED=true -e RTP_PORT_RANGE=10000-10099 -p 8188:8188 -p 10000-10099:10000-10099/udp -ti swmansion/janus-gateway:0.10.9-1
+docker run --rm \
+ -e GATEWAY_IP=192.168.0.123 \
+ -e STUN_SERVER=stun.l.google.com \
+ -e STUN_PORT=19302 \
+ -e WEBSOCKETS_ENABLED=true \
+ -e RTP_PORT_RANGE=10000-10099 \
+ -p 8188:8188 \
+ -p 10000-10099:10000-10099/udp \
+ -ti swmansion/janus-gateway:0.10.9-1
 ```
 
 (replace 192.168.0.123 with your IP)
