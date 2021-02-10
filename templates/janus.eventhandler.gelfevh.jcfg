@@ -1,0 +1,10 @@
+general: {
+	enabled = {{ default .Env.GELF_EVENTHANDLER_ENABLED "false" }}
+	events = "{{ default .Env.GELF_EVENTHANDLER_EVENTS "all" }}"
+	backend = "{{ default .Env.GELF_EVENTHANDLER_BACKEND "" }}"
+	port = "{{ default .Env.GELF_EVENTHANDLER_PORT "" }}"
+	protocol = "{{ default .Env.GELF_EVENTHANDLER_PROTOCOL "tcp" }}"
+	max_message_len = {{ default .Env.GELF_EVENTHANDLER_MAX_MESSAGE_LEN "1024" }}
+	compress = {{ default .Env.GELF_EVENTHANDLER_COMPRESS "true" }}
+	compression = {{ default .Env.GELF_EVENTHANDLER_COMPRESSION "9" }}
+}

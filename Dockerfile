@@ -99,6 +99,7 @@ RUN cd /build/janus-gateway && \
     --enable-rabbitmq \
     --disable-all-handlers \
     --enable-rabbitmq-event-handler \
+    --enable-gelf-event-handler \
     --disable-all-loggers
 RUN cd /build/janus-gateway && \
   make -j$(nproc) && \

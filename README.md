@@ -129,6 +129,17 @@ in Janus Gateway's source code for detailed explanation of the parameters.
 - RABBITMQ_EVENTHANDLER_SSL_CERT - Path to cert.pem
 - RABBITMQ_EVENTHANDLER_SSL_KEY - Path to key.pem
 
+### GELF
+
+- GELF_EVENTHANDLER_ENABLED - Whether events should be delivered over GELF (default=false)
+- GELF_EVENTHANDLER_EVENTS - Comma separated list of the events mask you're interested in. Valid values are none, sessions, handles, jsep, webrtc, media, plugins, transports, core, external and all. By default we subscribe to everything (all)
+- GELF_EVENTHANDLER_BACKEND - Address of the Graylog server
+- GELF_EVENTHANDLER_PORT - Port of the Graylog server
+- GELF_EVENTHANDLER_PROTOCOL - tcp or udp transport type (tcp by default, although udp is recommended)
+- GELF_EVENTHANDLER_MAX_MESSAGE_LEN - Note that we add 12 bytes of headers + standard UDP headers (8 bytes), when calculating packet size based on MTU  (1024 by default)
+- GELF_EVENTHANDLER_COMPRESS - Optionally, only for UDP transport, JSON messages can be compressed using zlib (true by default)
+- GELF_EVENTHANDLER_COMPRESSION - In case of compression, you can specify the compression factor, where 1 is the fastest (low compression), and 9 gives the best compression
+
 ### WebSockets
 
 See [janus.transport.websockets.jcfg.sample](https://github.com/meetecho/janus-gateway/blob/v0.10.9/conf/janus.transport.websockets.jcfg.sample)
