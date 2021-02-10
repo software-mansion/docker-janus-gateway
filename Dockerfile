@@ -117,8 +117,10 @@ RUN wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSI
     && tar -C /usr/local/bin -xzvf dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz \
     && rm dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
 
-
 FROM ubuntu:focal
+ARG app_uid=999
+ARG ulimit_nofile_soft=524288
+ARG ulimit_nofile_hard=1048576
 
 # Install runtime dependencies of janus-gateway
 RUN \
@@ -149,8 +151,13 @@ ADD templates /templates
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
+# Set ulimits
+RUN \
+  echo ":${app_uid}	soft	nofile	${ulimit_nofile_soft}" > /etc/security/limits.conf && \
+  echo ":${app_uid}	hard	nofile	${ulimit_nofile_hard}" >> /etc/security/limits.conf
+
 # Do not run as root unless necessary
-RUN groupadd -g 999 app && useradd -r -u 999 -g app app
+RUN groupadd -g ${app_uid} app && useradd -r -u ${app_uid} -g app app
 
 # Start the gateway
 ENV LD_LIBRARY_PATH=/usr/local/lib:/usr/local/lib/x86_64-linux-gnu
