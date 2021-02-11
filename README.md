@@ -87,6 +87,13 @@ to the original configuration files in order to provide more consistent usage.
 - ICE_ENFORCE_LIST - choose which interfaces should be explicitly used by the gateway for the purpose of ICE candidates gathering (e.g. "eth0,192.168.0.1"), empty by default
 - ICE_IGNORE_LIST - choose which interfaces should be ignored by the gateway for the purpose of ICE candidates gathering (e.g. "eth0,192.168.0.1"), (default=vmnet)
 
+### Loaded libraries
+
+- DISABLED_PLUGINS - disables plugins, e.g. "libjanus_voicemail.so,libjanus_recordplay.so"
+- DISABLED_TRANSPORTS - disables transport libraries (default="libjanus_pfunix.so")
+- DISABLED_LOGGERS - disables logging plugins, e.g. "libjanus_jsonlog.so" (default = "")
+- DISABLED_EVENT_HANDLERS - disabled event handler libs, e.g. "libjanus_sampleevh.so"
+
 ### RabbitMQ
 
 See [janus.transport.rabbitmq.jcfg.sample](https://github.com/meetecho/janus-gateway/blob/v0.10.9/conf/janus.transport.rabbitmq.jcfg.sample)
@@ -140,7 +147,7 @@ in Janus Gateway's source code for detailed explanation of the parameters.
 - GELF_EVENTHANDLER_BACKEND - Address of the Graylog server
 - GELF_EVENTHANDLER_PORT - Port of the Graylog server
 - GELF_EVENTHANDLER_PROTOCOL - tcp or udp transport type (tcp by default, although udp is recommended)
-- GELF_EVENTHANDLER_MAX_MESSAGE_LEN - Note that we add 12 bytes of headers + standard UDP headers (8 bytes), when calculating packet size based on MTU  (1024 by default)
+- GELF_EVENTHANDLER_MAX_MESSAGE_LEN - Note that we add 12 bytes of headers + standard UDP headers (8 bytes), when calculating packet size based on MTU (1024 by default)
 - GELF_EVENTHANDLER_COMPRESS - Optionally, only for UDP transport, JSON messages can be compressed using zlib (true by default)
 - GELF_EVENTHANDLER_COMPRESSION - In case of compression, you can specify the compression factor, where 1 is the fastest (low compression), and 9 gives the best compression
 

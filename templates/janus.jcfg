@@ -32,7 +32,7 @@ general: {
 									# be enabled, as tokens are added and removed
 									# through messages sent there.
 	admin_secret = "{{ default .Env.ADMIN_SECRET "janusoverlord" }}"
-	                # String that all Janus requests must contain
+									# String that all Janus requests must contain
 									# to be accepted/authorized by the admin/monitor.
 									# only needed if you enabled the admin API
 									# in any of the available transports.
@@ -199,8 +199,11 @@ media: {
 # be used for gathering candidates, and enable or disable the
 # internal libnice debugging, if needed.
 nat: {
+	{{ if .Env.STUN_SERVER }}
 	stun_server = "{{ default .Env.STUN_SERVER "" }}"
 	stun_port = {{ default .Env.STUN_PORT "" }}
+	{{ end }}
+
 	nice_debug = {{ default .Env.NICE_DEBUG "false" }}
 	full_trickle = {{ default .Env.FULL_TRICKLE "true" }}
 	ice_lite = {{ default .Env.ICE_LITE "false" }}
@@ -286,7 +289,9 @@ nat: {
 # names to identify the plugins to disable. By default all available
 # plugins are enabled and loaded at startup.
 plugins: {
-	#disable = "libjanus_voicemail.so,libjanus_recordplay.so"
+	{{ if .Env.DISABLED_PLUGINS }}
+	disable = "{{.Env.DISABLED_PLUGINS}}"
+	{{end}}
 }
 
 # You can choose which of the available transports should be enabled or
@@ -295,7 +300,7 @@ plugins: {
 # to identify the transports to disable. By default all available
 # transports are enabled and loaded at startup.
 transports: {
-	disable = "libjanus_pfunix.so"
+	disable = "{{ default .Env.DISABLED_TRANSPORTS "libjanus_pfunix.so" }}"
 }
 
 # As a core feature, Janus can log either on the standard output, or to
@@ -306,6 +311,10 @@ transports: {
 # to disable. By default all available loggers are enabled and loaded at startup.
 loggers: {
 	#disable = "libjanus_jsonlog.so"
+
+	{{ if .Env.DISABLED_LOGGERS }}
+	disable = "{{.Env.DISABLED_LOGGERS}}"
+	{{end}}
 }
 
 # Event handlers allow you to receive live events from Janus happening
@@ -328,4 +337,8 @@ events: {
 	broadcast = true
 	#disable = "libjanus_sampleevh.so"
 	#stats_period = 5
+
+	{{ if .Env.DISABLED_EVENT_HANDLERS }}
+	disable = "{{.Env.DISABLED_EVENT_HANDLERS}}"
+	{{end}}
 }
