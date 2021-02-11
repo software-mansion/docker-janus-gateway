@@ -31,7 +31,7 @@ RUN \
 	  libssl-dev \
     libglib2.0-dev \
     python3 \
-    python3-pip \ 
+    python3-pip \
     python3-setuptools \
     python3-wheel \
     ninja-build \
@@ -146,11 +146,6 @@ RUN \
 
 # Copy all things that were built
 COPY --from=build /usr/local /usr/local
-ADD templates /templates
-
-# Copy entrypoint
-COPY entrypoint.sh /entrypoint.sh
-RUN chmod +x /entrypoint.sh
 
 # Set ulimits
 RUN \
@@ -159,6 +154,11 @@ RUN \
 
 # Do not run as root unless necessary
 RUN groupadd -g ${app_uid} app && useradd -r -u ${app_uid} -g app app
+
+# Copy entrypoint and config templates
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+ADD templates /templates
 
 # Start the gateway
 ENV LD_LIBRARY_PATH=/usr/local/lib:/usr/local/lib/x86_64-linux-gnu
