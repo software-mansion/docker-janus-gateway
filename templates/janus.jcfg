@@ -303,7 +303,7 @@ plugins: {
 # to identify the transports to disable. By default all available
 # transports are enabled and loaded at startup.
 transports: {
-	{{ if .Env.DISABLED_TRANSPORTS }}"
+	{{ if .Env.DISABLED_TRANSPORTS }}
 	disable = "{{.Env.DISABLED_TRANSPORTS}}"
 	{{end}}
 }

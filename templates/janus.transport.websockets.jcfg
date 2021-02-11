@@ -9,12 +9,21 @@ general: {
 	wss_port = {{ default .Env.WEBSOCKETS_SSL_PORT "8989" }}
 	ws_logging = "{{ default .Env.WEBSOCKETS_LOGGING "err,warn" }}"
 
-  # FIXME, set this only if env var is present
-	#ws_interface = "{{ default .Env.WEBSOCKETS_INTERFACE "eth0" }}"
-	#ws_ip = "{{ default .Env.WEBSOCKETS_IP "192.168.0.1" }}"
-	#wss_interface = "{{ default .Env.WEBSOCKETS_SSL_INTERFACE "eth0" }}"
-	#wss_ip = "{{ default .Env.WEBSOCKETS_SSL_IP "192.168.0.1" }}"
-	#ws_acl = "{{ default .Env.WEBSOCKETS_ACL "127.,192.168.0." }}"
+	{{ if .Env.WEBSOCKETS_INTERFACE }}
+	ws_interface = "{{ .Env.WEBSOCKETS_INTERFACE }}"
+	{{ end }}
+	{{ if .Env.WEBSOCKETS_IP }}
+	ws_ip = "{{ .Env.WEBSOCKETS_IP }}"
+	{{ end }}
+	{{ if .Env.WEBSOCKETS_SSL_INTERFACE }}
+	wss_interface = "{{ .Env.WEBSOCKETS_SSL_INTERFACE }}"
+	{{ end }}
+	{{ if .Env.WEBSOCKETS_SSL_IP }}
+	wss_ip = "{{ .Env.WEBSOCKETS_SSL_IP }}"
+	{{ end }}
+	{{ if .Env.WEBSOCKETS_ACL }}
+	ws_acl = "{{ .Env.WEBSOCKETS_ACL }}"
+	{{ end }}
 }
 
 admin: {
@@ -23,12 +32,21 @@ admin: {
 	admin_wss = {{ default .Env.WEBSOCKETS_ADMIN_SSL_ENABLED "false" }}
 	admin_wss_port = {{ default .Env.WEBSOCKETS_ADMIN_SSL_PORT "7989" }}
 
-  # FIXME, set this only if env var is present
-	#admin_ws_interface = "{{ default .Env.WEBSOCKETS_ADMIN_INTERFACE "eth0" }}"
-	#admin_ws_ip = "{{ default .Env.WEBSOCKETS_ADMIN_IP "192.168.0.1" }}"
-	#admin_wss_interface = "{{ default .Env.WEBSOCKETS_ADMIN_SSL_INTERFACE "eth0" }}"
-	#admin_wss_ip = "{{ default .Env.WEBSOCKETS_ADMIN_SSL_IP "192.168.0.1" }}"
-	#admin_ws_acl = "{{ default .Env.WEBSOCKETS_ADMIN_ACL "127.,192.168.0." }}"
+	{{ if .Env.WEBSOCKETS_ADMIN_INTERFACE }}
+	admin_ws_interface = "{{ .Env.WEBSOCKETS_ADMIN_INTERFACE }}"
+	{{ end }}
+	{{ if .Env.WEBSOCKETS_ADMIN_IP}}
+	admin_ws_ip = "{{ .Env.WEBSOCKETS_ADMIN_IP }}"
+	{{ end }}
+	{{ if .Env.WEBSOCKETS_ADMIN_SSL_INTERFACE }}
+	admin_wss_interface = "{{ .Env.WEBSOCKETS_ADMIN_SSL_INTERFACE }}"
+	{{ end }}
+	{{ if .Env.WEBSOCKETS_ADMIN_SSL_IP }}
+	admin_wss_ip = "{{.Env.WEBSOCKETS_ADMIN_SSL_IP}}"
+	{{ end }}
+	{{ if .Env.WEBSOCKETS_ADMIN_ACL }}
+	admin_ws_acl = "{{.Env.WEBSOCKETS_ADMIN_ACL	}}"
+	{{ end }}
 }
 
 certificates: {

@@ -167,23 +167,23 @@ in Janus Gateway's source code for detailed explanation of the parameters.
 - WEBSOCKETS_PINGPONG_TRIGGER - After how many seconds of idle, a PING should be sent
 - WEBSOCKETS_PINGPONG_TIMEOUT - After how many seconds of not getting a PONG, a timeout should be detected
 - WEBSOCKETS_PORT - WebSockets server port
-- WEBSOCKETS_INTERFACE - Whether we should bind this server to a specific interface only (FIXME: currently has no effect)
-- WEBSOCKETS_IP - Whether we should bind this server to a specific IP address only (FIXME: currently has no effect)
+- WEBSOCKETS_INTERFACE - If set, bind this server only to a specific interface
+- WEBSOCKETS_IP - If set, bind this server to a specific IP address only
 - WEBSOCKETS_SSL_ENABLED - Whether to enable secure WebSockets
 - WEBSOCKETS_SSL_PORT - WebSockets server secure port, if enabled
-- WEBSOCKETS_SSL_INTERFACE - Whether we should bind this server to a specific interface only (FIXME: currently has no effect)
-- WEBSOCKETS_SSL_IP - Whether we should bind this server to a specific interface only (FIXME: currently has no effect)
-- WEBSOCKETS_ACL - Only allow requests coming from this comma separated list of addresses (FIXME: currently has no effect)
+- WEBSOCKETS_SSL_INTERFACE - If set, bind this server to a specific interface only
+- WEBSOCKETS_SSL_IP - If set, bind this server to a specific IP address only
+- WEBSOCKETS_ACL - If set, only allow requests coming from this comma separated list of addresses
 - WEBSOCKETS_LOGGING - libwebsockets debugging level as a comma separated list of things to debug, supported values: err, warn, notice, info, debug, parser, header, ext, client, latency, user, count (plus 'none' and 'all')
 - WEBSOCKETS_ADMIN_ENABLED - Whether to enable the Admin API WebSockets API (default=false)
 - WEBSOCKETS_ADMIN_PORT - Admin API WebSockets server port, if enabled
-- WEBSOCKETS_ADMIN_INTERFACE - Whether we should bind this server to a specific interface only (FIXME: currently has no effect)
-- WEBSOCKETS_ADMIN_IP - Whether we should bind this server to a specific IP address only (FIXME: currently has no effect)
+- WEBSOCKETS_ADMIN_INTERFACE - If set bind this server to a specific interface only
+- WEBSOCKETS_ADMIN_IP - If set bind this server to a specific IP address only
 - WEBSOCKETS_ADMIN_SSL_ENABLED - Whether to enable the Admin API secure WebSockets
 - WEBSOCKETS_ADMIN_SSL_PORT - Admin API WebSockets server secure port, if enabled
-- WEBSOCKETS_ADMIN_SSL_INTERFACE - Whether we should bind this server to a specific interface only (FIXME: currently has no effect)
-- WEBSOCKETS_ADMIN_SSL_IP - Whether we should bind this server to a specific IP address only (FIXME: currently has no effect)
-- WEBSOCKETS_ADMIN_ACL - Only allow requests coming from this comma separated list of addresses (FIXME: currently has no effect)
+- WEBSOCKETS_ADMIN_SSL_INTERFACE - If set, bind this server to a specific interface only
+- WEBSOCKETS_ADMIN_SSL_IP - If set, bind this server to a specific IP address only
+- WEBSOCKETS_ADMIN_ACL - If set, only allow requests coming from this comma separated list of addresses
 - WEBSOCKETS_SSL_CERT_PEM - If SSL is enabled, path to certificate's PEM file
 - WEBSOCKETS_SSL_CERT_KEY - If SSL is enabled, path to certificate's key file
 - WEBSOCKETS_SSL_CERT_PWD - If SSL is enabled, certificate's passphrase
