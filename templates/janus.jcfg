@@ -204,7 +204,7 @@ media: {
 nat: {
 	{{ if .Env.STUN_SERVER }}
 	stun_server = "{{ default .Env.STUN_SERVER "" }}"
-	stun_port = {{ default .Env.STUN_PORT "" }}
+	stun_port = "{{ default .Env.STUN_PORT "" }}"
 	{{ end }}
 
 	nice_debug = {{ default .Env.NICE_DEBUG "false" }}
@@ -303,7 +303,9 @@ plugins: {
 # to identify the transports to disable. By default all available
 # transports are enabled and loaded at startup.
 transports: {
-	disable = "{{ default .Env.DISABLED_TRANSPORTS "libjanus_pfunix.so" }}"
+	{{ if .Env.DISABLED_TRANSPORTS }}"
+	disable = "{{.Env.DISABLED_TRANSPORTS}}"
+	{{end}}
 }
 
 # As a core feature, Janus can log either on the standard output, or to

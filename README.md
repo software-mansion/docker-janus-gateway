@@ -94,10 +94,10 @@ to the original configuration files in order to provide more consistent usage.
 
 ### Loaded libraries
 
-- DISABLED_PLUGINS - disables plugins, e.g. "libjanus_voicemail.so,libjanus_recordplay.so"
-- DISABLED_TRANSPORTS - disables transport libraries (default="libjanus_pfunix.so")
-- DISABLED_LOGGERS - disables logging plugins, e.g. "libjanus_jsonlog.so" (default = "")
-- DISABLED_EVENT_HANDLERS - disabled event handler libs, e.g. "libjanus_sampleevh.so"
+- DISABLED_PLUGINS - if set, disables plugins, e.g. "libjanus_voicemail.so,libjanus_recordplay.so"
+- DISABLED_TRANSPORTS - if set, disables transport libraries, e.g. "libjanus_pfunix.so"
+- DISABLED_LOGGERS - if set, disables logging plugins, e.g. "libjanus_jsonlog.so"
+- DISABLED_EVENT_HANDLERS - if set, disables event handler libs, e.g. "libjanus_sampleevh.so"
 
 ### RabbitMQ
 
