@@ -73,6 +73,9 @@ general: {
 									# external scripts), then uncomment and set the
 									# recordings_tmp_ext property to the extension
 									# to add to the base (e.g., tmp --> .mjr.tmp).
+	{{ if .Env.RECORDINGS_TMP_EXT }}
+	recordings_tmp_ext = "{{ .Env.RECORDINGS_TMP_EXT }}"
+	{{ end }}
 	#event_loops = 8				# By default, Janus handles each have their own
 									# event loop and related thread for all the media
 									# routing and management. If for some reason you'd

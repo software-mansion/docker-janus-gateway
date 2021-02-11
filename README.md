@@ -56,6 +56,11 @@ to the original configuration files in order to provide more consistent usage.
 
 - SERVER_NAME - String that identifies this particular Janus instance (default=MyJanusInstance)
 
+#### Recordings
+
+- RECORDINGS_TMP_EXT - if set, adds an extension to temporary recording files (e.g. for "tmp" unfinished recordings are saved with ".mjr.tmp" extension)
+- RECORDINGS_DIR - a directory that should be available for Janus to write recordings. WARNING - the directory has to be provided each time you create the room ("rec_dir" property in "create" request)!
+
 #### Authentication
 
 - ADMIN_SECRET - String that all Janus requests must contain to be accepted/authorized by the admin/monitor (default=janusoverlord).

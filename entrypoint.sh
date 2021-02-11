@@ -19,4 +19,9 @@ else
   echo "RabbitMQ event handler disabled"
 fi
 
+if [[ ! -z $RECORDINGS_DIR ]]; then
+  mkdir -p $RECORDINGS_DIR
+  chown app:app $RECORDINGS_DIR
+fi
+
 dockerize $DOCKERIZE_EXTRA_ARGS $DOCKERIZE_COMMON_ARGS
