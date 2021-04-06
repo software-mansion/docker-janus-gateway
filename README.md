@@ -7,7 +7,7 @@ It aims to create a high-quality image that allows to run the gateway. By high
 quality we mean in particular:
 
 - being able to fully configure Janus Gateway over environment variables,
-- mitigating issues that might arise if other dependentn services such as RabbitMQ
+- mitigating issues that might arise if other dependent services such as RabbitMQ
   are not ready upon Janus boot time,
 - being able to easily build custom plugins on top of this image,
 - being able to monitor the gateway.
@@ -24,7 +24,7 @@ being incremented from 0.
 # Building
 
 ```
-docker build -t swmansion/janus-gateway:0.10.9-2 .
+docker build -t swmansion/janus-gateway:0.11.1-0 .
 ```
 
 # Usage
@@ -40,7 +40,7 @@ docker run --rm \
  -e RTP_PORT_RANGE=10000-10099 \
  -p 8188:8188 \
  -p 10000-10099:10000-10099/udp \
- -ti swmansion/janus-gateway:0.10.9-2
+ -ti swmansion/janus-gateway:0.11.1-0
 ```
 
 (replace 192.168.0.123 with your IP)
@@ -101,7 +101,7 @@ to the original configuration files in order to provide more consistent usage.
 
 ### RabbitMQ
 
-See [janus.transport.rabbitmq.jcfg.sample](https://github.com/meetecho/janus-gateway/blob/v0.10.9/conf/janus.transport.rabbitmq.jcfg.sample)
+See [janus.transport.rabbitmq.jcfg.sample](https://github.com/meetecho/janus-gateway/blob/v0.11.1/conf/janus.transport.rabbitmq.jcfg.sample)
 in Janus Gateway's source code for detailed explanation of the parameters.
 
 - RABBITMQ_ENABLED - Whether the support must be enabled (default=false),
@@ -158,7 +158,7 @@ in Janus Gateway's source code for detailed explanation of the parameters.
 
 ### WebSockets
 
-See [janus.transport.websockets.jcfg.sample](https://github.com/meetecho/janus-gateway/blob/v0.10.9/conf/janus.transport.websockets.jcfg.sample)
+See [janus.transport.websockets.jcfg.sample](https://github.com/meetecho/janus-gateway/blob/v0.11.1/conf/janus.transport.websockets.jcfg.sample)
 in Janus Gateway's source code for detailed explanation of the parameters.
 
 - WEBSOCKETS_ENABLED - Whether to enable the WebSockets API (default=false)
