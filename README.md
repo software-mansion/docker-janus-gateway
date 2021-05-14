@@ -1,4 +1,5 @@
-# Janus Gateway - Docker Image
+<img src="https://user-images.githubusercontent.com/16062886/118253428-34e82080-b4aa-11eb-8a9b-24bdc9e95885.png" alt="Janus Gateway - Docker Image" width="100%"/>
+
 
 This repository contains a scripts necessary to build a Docker image of the
 [Janus Gateway](https://janus.conf.meetecho.com/).
