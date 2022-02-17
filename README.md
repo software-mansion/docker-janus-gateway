@@ -25,7 +25,7 @@ being incremented from 0.
 # Building
 
 ```
-docker build -t swmansion/janus-gateway:0.11.4-0 .
+docker build -t swmansion/janus-gateway:0.11.8-0 .
 ```
 
 # Usage
@@ -41,7 +41,7 @@ docker run --rm \
  -e RTP_PORT_RANGE=10000-10099 \
  -p 8188:8188 \
  -p 10000-10099:10000-10099/udp \
- -ti swmansion/janus-gateway:0.11.4-0
+ -ti swmansion/janus-gateway:0.11.8-0
 ```
 
 (replace 192.168.0.123 with your IP)
@@ -102,7 +102,7 @@ to the original configuration files in order to provide more consistent usage.
 
 ### RabbitMQ
 
-See [janus.transport.rabbitmq.jcfg.sample](https://github.com/meetecho/janus-gateway/blob/v0.11.4/conf/janus.transport.rabbitmq.jcfg.sample)
+See [janus.transport.rabbitmq.jcfg.sample](https://github.com/meetecho/janus-gateway/blob/v0.11.8/conf/janus.transport.rabbitmq.jcfg.sample)
 in Janus Gateway's source code for detailed explanation of the parameters.
 
 - RABBITMQ_ENABLED - Whether the support must be enabled (default=false),
@@ -159,7 +159,7 @@ in Janus Gateway's source code for detailed explanation of the parameters.
 
 ### WebSockets
 
-See [janus.transport.websockets.jcfg.sample](https://github.com/meetecho/janus-gateway/blob/v0.11.4/conf/janus.transport.websockets.jcfg.sample)
+See [janus.transport.websockets.jcfg.sample](https://github.com/meetecho/janus-gateway/blob/v0.11.8/conf/janus.transport.websockets.jcfg.sample)
 in Janus Gateway's source code for detailed explanation of the parameters.
 
 - WEBSOCKETS_ENABLED - Whether to enable the WebSockets API (default=false)

@@ -89,7 +89,7 @@ RUN \
 # Build janus-gateway from sources
 RUN \
   cd /build && \
-  git clone --branch v0.11.4 https://github.com/meetecho/janus-gateway.git
+  git clone --branch v0.11.8 https://github.com/meetecho/janus-gateway.git
 RUN cd /build/janus-gateway && \
   sh autogen.sh && \
   ./configure --prefix=/usr/local \
