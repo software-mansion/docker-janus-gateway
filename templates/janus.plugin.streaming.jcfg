@@ -1,0 +1,18 @@
+general: {
+	admin_key = "{{ default .Env.PLUGIN_STREAMING_ADMIN_KEY "supersecret" }}"		
+                  # If set, mountpoints can be created via API
+                  # only if this key is provided in the request
+	rtp_port_range = "{{ default .Env.RTP_PORT_RANGE "10000-20000" }}"
+                  # Range of ports to use for RTP/RTCP when '0' is
+                  # passed as port for a mountpoint (default=10000-60000)
+                  #
+	events = {{ default .Env.PLUGIN_STREAMING_EVENTS "true" }}
+                  # Whether events should be sent to event
+                  # handlers (default=true)
+
+	# By default, integers are used as a unique ID for both mountpoints. In case
+	# you want to use strings instead (e.g., a UUID), set string_ids to true.
+	string_ids = {{ default .Env.PLUGIN_STREAMING_STRING_IDS "false" }}		
+}
+
+{{ default .Env.PLUGIN_STREAMING_EXTRA "" }}

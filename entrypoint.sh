@@ -1,4 +1,5 @@
 #!/bin/bash
+
 DOCKERIZE_COMMON_ARGS="-template /templates:/usr/local/etc/janus su app -c /usr/local/bin/janus"
 
 if [[ "$RABBITMQ_ENABLED" == "true" ]]; then
