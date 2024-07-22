@@ -240,6 +240,20 @@ in Janus Gateway's source code for detailed explanation of the parameters.
 #}
 ```
 
+#### Streaming
+- PLUGIN_STREAMING_ADMIN_KEY - If set, streams can be craeted via API only if this key is provided in the request (default=supersecret)
+- PLUGIN_STREAMING_EVENTS - Whether events should be sent to event handlers (default=true)
+- PLUGIN_STREAMING_STRING_IDS - By default, integers are used as a unique ID. In case you want to use strings instead (e.g., a UUID), set string_ids to true. (default=false)
+- PLUGIN_STREAMING_EXTRA - An extra config that will be appended to the config file, with streaming config
+
+```
+general: {
+	events = true					
+                  # Whether events should be sent to event
+                  # handlers (default=true)
+}
+```
+
 ## Copyright and License
 
 Copyright 2020, [Software Mansion](https://swmansion.com/?utm_source=git&utm_medium=readme&utm_campaign=docker-janus)

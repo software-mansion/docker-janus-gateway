@@ -1,5 +1,7 @@
 FROM ubuntu:focal AS build
 ENV DEBIAN_FRONTEND=noninteractive
+ENV OS=linux
+ENV ARCH=amd64
 
 # Create workdir
 RUN mkdir /build
@@ -41,7 +43,7 @@ RUN \
 # Build libnice from sources as one shipped with ubuntu is a bit outdated
 RUN \
   cd /build && \
-  git clone --branch 0.1.18 https://gitlab.freedesktop.org/libnice/libnice.git && \
+  git clone --branch 0.1.22 https://gitlab.freedesktop.org/libnice/libnice.git && \
   cd libnice && \
   meson builddir && \
   ninja -C builddir && \
@@ -89,7 +91,7 @@ RUN \
 # Build janus-gateway from sources
 RUN \
   cd /build && \
-  git clone --branch v0.11.8 https://github.com/meetecho/janus-gateway.git
+  git clone --branch v1.2.3 https://github.com/meetecho/janus-gateway.git
 RUN cd /build/janus-gateway && \
   sh autogen.sh && \
   ./configure --prefix=/usr/local \
@@ -113,10 +115,10 @@ RUN \
     wget
 
 # Install dockerize
-ENV DOCKERIZE_VERSION v0.6.1
-RUN wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz \
-    && tar -C /usr/local/bin -xzvf dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz \
-    && rm dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
+ENV DOCKERIZE_VERSION v0.7.0
+RUN wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-$OS-$ARCH-$DOCKERIZE_VERSION.tar.gz \
+    && tar -C /usr/local/bin -xzvf dockerize-$OS-$ARCH-$DOCKERIZE_VERSION.tar.gz \
+    && rm dockerize-$OS-$ARCH-$DOCKERIZE_VERSION.tar.gz
 
 FROM ubuntu:focal
 ARG app_uid=999
@@ -161,5 +163,5 @@ RUN chmod +x /entrypoint.sh
 ADD templates /templates
 
 # Start the gateway
-ENV LD_LIBRARY_PATH=/usr/local/lib:/usr/local/lib/x86_64-linux-gnu
+ENV LD_LIBRARY_PATH=/usr/local/lib:/usr/local/lib/x86_64-linux-gnu:/usr/local/lib/aarch64-linux-gnu
 CMD /entrypoint.sh
